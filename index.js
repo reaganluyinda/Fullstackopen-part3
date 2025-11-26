@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
 
-console.log("hello reagan");
-
 let persons = [
   {
     id: "1",
@@ -26,8 +24,17 @@ let persons = [
   },
 ];
 
+//GET request to fetch all persons
 app.get("/api/persons", (request, response) => {
   response.json(persons);
+});
+
+//GET request to fetch info
+app.get("/api/info", (request, response) => {
+  const date = new Date();
+  response.send(
+    `<p>Phonebook has info for ${persons.length} people</p><p>${date}</p>`
+  );
 });
 
 const PORT = 3001;
