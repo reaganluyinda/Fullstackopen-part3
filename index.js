@@ -56,10 +56,17 @@ app.delete("/api/persons/:id", (request, response) => {
 });
 
 //route for for adding new person
-
 app.use(express.json());
 app.post("/api/persons", (request, response) => {
   const body = request.body;
+
+  if (!body.name || !body.number) {
+    return response.status(400).json({ error: "name or number is missing" });
+  }
+
+  if (persons.find((person) => person.name === body.name)) {
+    return response.status(400).json({ error: "name must be unique" });
+  }
 
   const newPerson = {
     id: (Math.random() * 1000000).toFixed(0),
