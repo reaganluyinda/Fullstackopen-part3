@@ -1,4 +1,5 @@
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
 
 let persons = [
@@ -23,6 +24,9 @@ let persons = [
     number: "39-23-6423122",
   },
 ];
+
+app.use(express.json());
+app.use(morgan("tiny"));
 
 //GET request to fetch all persons
 app.get("/api/persons", (request, response) => {
@@ -56,7 +60,7 @@ app.delete("/api/persons/:id", (request, response) => {
 });
 
 //route for for adding new person
-app.use(express.json());
+
 app.post("/api/persons", (request, response) => {
   const body = request.body;
 
