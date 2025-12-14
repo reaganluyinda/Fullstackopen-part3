@@ -32,6 +32,9 @@ app.use(express.json());
 //cors middleware
 app.use(cors());
 
+//show static files from dist folder from the frontend build
+app.use(express.static("dist"));
+
 morgan.token("body", (request) => JSON.stringify(request.body));
 app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms :body")
