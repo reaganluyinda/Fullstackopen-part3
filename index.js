@@ -1,6 +1,5 @@
 const express = require("express");
 const morgan = require("morgan");
-const cors = require("cors");
 const app = express();
 
 let persons = [
@@ -28,9 +27,6 @@ let persons = [
 
 app.use(express.json());
 // app.use(morgan("tiny"));
-
-//cors middleware
-app.use(cors());
 
 //show static files from dist folder from the frontend build
 app.use(express.static("dist"));
