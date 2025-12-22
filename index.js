@@ -24,10 +24,12 @@ app.get("/api/persons", (request, response) => {
 
 //GET request to fetch info
 app.get("/api/info", (request, response) => {
-  const date = new Date();
-  response.send(
-    `<p>Phonebook has info for ${persons.length} people</p><p>${date}</p>`
-  );
+  Person.countDocuments({}).then((count) => {
+    const date = new Date();
+    response.send(
+      `<p>Phonebook has info for ${count} people</p><p>${date}</p>`
+    );
+  });
 });
 
 //GET request to fetch a person by ID
@@ -39,9 +41,9 @@ app.get("/api/persons/:id", (request, response) => {
 
 //route for delete request
 app.delete("/api/persons/:id", (request, response) => {
-  const id = request.params.id;
-  persons = persons.filter((person) => person.id !== id);
-  response.status(204).end();
+  Person.findByIdAndDelete(request.params.id).then(() => {
+    response.status(204).end();
+  });
 });
 
 //route for for adding new person
