@@ -32,13 +32,9 @@ app.get("/api/info", (request, response) => {
 
 //GET request to fetch a person by ID
 app.get("/api/persons/:id", (request, response) => {
-  const id = request.params.id;
-  const person = persons.find((person) => person.id === id);
-  if (person) {
+  Person.findById(request.params.id).then((person) => {
     response.json(person);
-  } else {
-    response.status(404).end();
-  }
+  });
 });
 
 //route for delete request
@@ -57,17 +53,14 @@ app.post("/api/persons", (request, response) => {
     return response.status(400).json({ error: "name or number is missing" });
   }
 
-  if (persons.find((person) => person.name === body.name)) {
-    return response.status(400).json({ error: "name must be unique" });
-  }
-
-  const newPerson = {
-    id: (Math.random() * 1000000).toFixed(0),
+  const person = new Person({
     name: body.name,
     number: body.number,
-  };
-  persons = persons.concat(newPerson);
-  response.json(newPerson);
+  });
+
+  person.save().then((savedPerson) => {
+    response.json(savedPerson);
+  });
 });
 
 const PORT = process.env.PORT;

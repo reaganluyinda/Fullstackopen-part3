@@ -4,7 +4,7 @@ GET http://localhost:3001/api/persons
 GET http://localhost:3001/api/info
 
 ###
-GET http://localhost:3001/api/persons/5
+GET http://localhost:3001/api/persons/69495c40e70bcb910bc46fae
 
 ###
 DELETE http://localhost:3001/api/persons/985765
@@ -26,7 +26,7 @@ GET https://fullstackopen-part3-4n3j.onrender.com/api/persons
 GET https://fullstackopen-part3-4n3j.onrender.com/api/info
 
 ###
-GET https://fullstackopen-part3-4n3j.onrender.com/api/persons/2
+GET https://fullstackopen-part3-4n3j.onrender.com/api/persons/69495c40e70bcb910bc46fae
 
 ###
 DELETE https://fullstackopen-part3-4n3j.onrender.com/api/persons/7562
@@ -36,6 +36,6 @@ POST https://fullstackopen-part3-4n3j.onrender.com/api/persons
 Content-Type: application/json
 
 {
-    "name": "LUI WINTWER",
+    "name": "Mikko Virtanen",
     "number": "044-555666"
 }
