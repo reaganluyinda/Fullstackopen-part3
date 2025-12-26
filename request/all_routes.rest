@@ -19,6 +19,15 @@ Content-Type: application/json
 }
 
 ###
+PUT http://localhost:3001/api/persons/6946cf8ac220eea53e3a6ac7
+Content-Type: application/json
+
+{
+    "name": "Reagan Smith",
+    "number": "044-555666"
+}
+
+###
 //tests for deployed backend
 GET https://fullstackopen-part3-4n3j.onrender.com/api/persons
 
