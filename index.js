@@ -70,7 +70,7 @@ app.post("/api/persons", (request, response) => {
 });
 
 //route for updating existing person
-app.put("/api/persons/:id", (request, response) => {
+app.put("/api/persons/:id", (request, response, next) => {
   const body = request.body;
 
   const person = {
@@ -78,11 +78,11 @@ app.put("/api/persons/:id", (request, response) => {
     number: body.number,
   };
 
-  Person.findByIdAndUpdate(request.params.id, person, { new: true }).then(
-    (updatedPerson) => {
+  Person.findByIdAndUpdate(request.params.id, person, { new: true })
+    .then((updatedPerson) => {
       response.json(updatedPerson);
-    }
-  );
+    })
+    .catch((error) => next(error));
 });
 
 //unknown endpoint middleware
