@@ -7,15 +7,15 @@ GET http://localhost:3001/api/info
 GET http://localhost:3001/api/persons/6946cfc3380608b5561baf11
 
 ###
-DELETE http://localhost:3001/api/persons/69529ba8df420f84fc217923
+DELETE http://localhost:3001/api/persons/69568e6dd1b0f6b33ee00a4c
 
 ###
 POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "name": "li",
-    "number": "040-775522"
+    "name": "llian rose",
+    "number": "040-175522"
 }
 
 ###
